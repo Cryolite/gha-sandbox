@@ -11,9 +11,7 @@ jobs:
         sshd_config_dir="$(dirname "$authorized_keys_file")"
         (umask 0077 && mkdir "$sshd_config_dir")
         (umask 0077 && echo '${{ secrets.SSH_PUBLIC_KEY }}' >>"$authorized_keys_file")
-    - run: 'ls -lA ~'
-    - run: 'ls -lA ~/.ssh'
-    - run: 'ls -lA ~/.ssh/authorized_keys'
+    - run: 'xxd .ssh/authorized_keys'
     - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -NsS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -NsST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
     - run: 'false'
