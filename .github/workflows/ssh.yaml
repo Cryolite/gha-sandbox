@@ -6,4 +6,5 @@ jobs:
     steps:
     - uses: 'actions/checkout@v1'
     - run: 'sudo apt-get install socat'
+    - run: 'dpkg -l | grep -F ssh'
     - run: 'socat ''EXEC:curl -sS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -sST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
