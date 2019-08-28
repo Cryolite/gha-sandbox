@@ -1,0 +1,15 @@
+name: 'Master Slave'
+on: [push]
+jobs:
+  master:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: 'actions/checkout@v1'
+    - name: 'Show IP addresses'
+      run: 'ip address show'
+  slave:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: 'actions/checkout@v1'
+    - name: 'Show IP addresses'
+      run: 'ip address show'
