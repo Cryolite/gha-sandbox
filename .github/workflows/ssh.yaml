@@ -4,7 +4,6 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: sshd -T
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
@@ -12,6 +11,7 @@ jobs:
         sshd_config_dir="$(dirname "$authorized_keys_file")"
         mkdir -p "$sshd_config_dir"
         echo '${{ secrets.SSH_PUBLIC_KEY }}' >>"$authorized_keys_file"
+        ls -lA ~/.ssh
     - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -NsS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -NsST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
     - run: 'false'
