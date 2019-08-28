@@ -4,7 +4,8 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'echo "$HOME"'
+    - run: 'ls -lA /github'
+    - run: 'ls -lA /github/home'
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
