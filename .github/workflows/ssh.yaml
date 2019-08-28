@@ -5,5 +5,5 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
     - uses: 'actions/checkout@v1'
-    - run: 'apt-get install socat'
+    - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -sS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -sST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
