@@ -4,13 +4,12 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: sshd -T
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
         authorized_keys_file="$(cd && realpath -m "$authorized_keys_file")"
         sshd_config_dir="$(dirname "$authorized_keys_file")"
-        mkdir -p "$sshd_config_dir"
+        (umask 0077 && mkdir "$sshd_config_dir")
         (umask 0077 && echo '${{ secrets.SSH_PUBLIC_KEY }}' >>"$authorized_keys_file")
         ls -lA ~/.ssh
     - run: 'sudo apt-get install socat'
