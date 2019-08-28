@@ -4,7 +4,10 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - uses: 'actions/checkout@v1'
+    - run: 'whoami'
+    - run: 'ls ~'
+    - run: 'ls ~/.ssh'
+    - run: 'echo ''${{ secrets.SSH_PUBLIC_KEY }}'' >>~/.ssh/authorized_keys'
     - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -NsS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -NsST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
     - run: 'false'
