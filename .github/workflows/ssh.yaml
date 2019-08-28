@@ -1,0 +1,8 @@
+name: 'SSH into Environment'
+on: [push]
+jobs:
+  master:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: 'actions/checkout@v1'
+    - run: 'socat ''EXEC:curl -sS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -sST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
