@@ -4,6 +4,7 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
+    - run: sshd -T
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
