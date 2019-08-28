@@ -4,10 +4,8 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'whoami'
-    - run: 'ls ~'
-    - run: 'ls ~/.ssh'
-    - run: 'echo ''${{ secrets.SSH_PUBLIC_KEY }}'' >>~/.ssh/authorized_keys'
+    - run: 'mkdir "$(dirname "$(realpath "$(sshd -T 2>/dev/null | grep -E ''^authorizedkeysfile '' | cut -d '' '' -f 2)")")"'
+    - run: 'echo ''${{ secrets.SSH_PUBLIC_KEY }}'' >>"$(sshd -T 2>/dev/null | grep -E ''^authorizedkeysfile '' | cut -d '' '' -f 2)"'
     - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -NsS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -NsST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
     - run: 'false'
