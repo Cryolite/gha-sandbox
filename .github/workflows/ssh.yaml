@@ -4,6 +4,7 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
+    - run: 'chmod 755 "$HOME"'
     - run: 'ls -lA /home'
     - run: |
         set -euo pipefail
