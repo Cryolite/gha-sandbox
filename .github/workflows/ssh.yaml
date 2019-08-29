@@ -20,5 +20,5 @@ jobs:
         (umask 0077 && echo '${{ secrets.SSH_PUBLIC_KEY }}' >>"$authorized_keys_file")
     - run: 'sudo apt-get install socat'
     - run: 'socat ''EXEC:curl -NsS https\://ppng.ml/xxxxxxxxxxxxxxxx!!EXEC:curl -NsST - https\://ppng.ml/yyyyyyyyyyyyyyyy'' TCP:127.0.0.1:22'
-    - run: 'sudo cat /var/log/secure'
+    - run: 'sudo tail /var/log/auth.log'
     - run: 'false'
