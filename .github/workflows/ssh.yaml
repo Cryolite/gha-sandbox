@@ -4,7 +4,12 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'ls -lA /home'
+    - run: 'ssh-keygen -q -t ed25519'
+    - run: 'ls -lA ~'
+    - run: 'ls -lA ~/.ssh'
+    - run: 'ls -lA /etc/ssh'
+    - run: 'cat /etc/ssh/sshd_config'
+    - run: 'cat /etc/ssh/ssh_config'
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
