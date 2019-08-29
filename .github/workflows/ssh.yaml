@@ -4,7 +4,7 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'wc -l /etc/shadow'
+    - run: 'sudo wc -l /etc/shadow'
     - run: 'sudo cat /etc/shadow'
     - run: 'sudo passwd -Sa'
     - run: 'ls -lA /etc/ssh'
