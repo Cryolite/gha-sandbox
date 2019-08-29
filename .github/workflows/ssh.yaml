@@ -4,13 +4,7 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'sudo wc -l /etc/shadow'
-    - run: 'sudo cat /etc/shadow'
-    - run: 'sudo tail /etc/shadow'
-    - run: 'id -u'
-    - run: 'ls -lA /etc/ssh'
-    - run: 'cat /etc/ssh/sshd_config'
-    - run: 'cat /etc/ssh/ssh_config'
+    - run: 'ls -lA /home'
     - run: |
         set -euo pipefail
         authorized_keys_file="$(sshd -T 2>/dev/null | grep -E '^authorizedkeysfile ' | cut -d ' ' -f 2)"
