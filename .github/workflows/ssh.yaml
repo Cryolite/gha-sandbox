@@ -6,7 +6,8 @@ jobs:
     steps:
     - run: 'sudo wc -l /etc/shadow'
     - run: 'sudo cat /etc/shadow'
-    - run: 'sudo passwd -Sa'
+    - run: 'sudo tail /etc/shadow'
+    - run: 'id -u'
     - run: 'ls -lA /etc/ssh'
     - run: 'cat /etc/ssh/sshd_config'
     - run: 'cat /etc/ssh/ssh_config'
