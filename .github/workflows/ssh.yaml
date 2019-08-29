@@ -4,9 +4,7 @@ jobs:
   master:
     runs-on: 'ubuntu-latest'
     steps:
-    - run: 'ssh-keygen -t ed25519 -N '''''
-    - run: 'ls -lA ~'
-    - run: 'ls -lA ~/.ssh'
+    - run: 'sudo cat /etc/shadow'
     - run: 'ls -lA /etc/ssh'
     - run: 'cat /etc/ssh/sshd_config'
     - run: 'cat /etc/ssh/ssh_config'
